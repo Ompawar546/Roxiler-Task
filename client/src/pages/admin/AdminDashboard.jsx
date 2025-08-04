@@ -25,13 +25,25 @@ export default function AdminDashboard() {
     fetchStats();
   }, []);
 
+  const containerStyle = {
+    display: 'flex',
+    fontFamily: 'system-ui, -apple-system, sans-serif',
+    width: '100vw', // Full viewport width
+    height: '100vh', // Full viewport height
+    margin: 0,
+    padding: 0,
+    overflow: 'hidden' // Prevent scrollbars from container
+  };
+
   const sidebarStyle = {
     width: '250px',
+    minWidth: '250px', // Prevent shrinking
     padding: '2rem 1.5rem',
     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     color: 'white',
-    minHeight: '100vh',
-    boxShadow: '2px 0 10px rgba(0,0,0,0.1)'
+    height: '100vh',
+    boxShadow: '2px 0 10px rgba(0,0,0,0.1)',
+    overflowY: 'auto' // Allow sidebar scrolling if needed
   };
 
   const navLinkStyle = {
@@ -52,17 +64,20 @@ export default function AdminDashboard() {
   };
 
   const contentStyle = {
+    flex: 1, // Take remaining space
     padding: '2rem 3rem',
-    flex: 1,
     backgroundColor: '#f8fafc',
-    minHeight: '100vh'
+    height: '100vh',
+    overflowY: 'auto', // Allow content scrolling
+    width: 'calc(100vw - 250px)' // Ensure it takes remaining width
   };
 
   const statsContainerStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '2rem',
-    marginTop: '2rem'
+    marginTop: '2rem',
+    width: '100%' // Ensure full width usage
   };
 
   const statCardStyle = {
@@ -115,7 +130,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div style={{ display: 'flex', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={containerStyle}>
       {/* Navigation */}
       <nav style={sidebarStyle}>
         <h2 style={sidebarTitleStyle}>Admin Panel</h2>
