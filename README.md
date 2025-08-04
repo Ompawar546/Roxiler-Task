@@ -40,42 +40,10 @@ JWT_SECRET=your_jwt_secret
 node server.js
 
 👮 How to Create an Admin Account
-There are two ways to create an admin account:
-
-✅ Option 1: Sign up & manually set role
-Sign up via /signup page.
-
-Open your database and run:
-
-UPDATE Users SET role = 'admin' WHERE email = 'your_email@example.com';
-
-
-✅ Option 2: Use Temporary Script
-Create a createAdmin.js file inside store-rating-backend:
-
-const bcrypt = require('bcryptjs');
-const { User } = require('./models');
-
-async function createAdmin() {
-  const hashedPassword = await bcrypt.hash('Admin@123', 10);
-  await User.create({
-    name: 'Super Admin',
-    email: 'admin@example.com',
-    password: hashedPassword,
-    address: 'Admin HQ',
-    role: 'admin',
-  });
-  console.log('Admin user created!');
-}
-
-createAdmin();
-
-
 
 Run the script:
 
-node createAdmin.js
-
+node createAdmin.js in backend folder
 
 Log in using:
 
